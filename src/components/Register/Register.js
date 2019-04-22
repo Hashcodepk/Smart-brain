@@ -23,7 +23,7 @@ class Register extends React.Component {
   }
 
   onSubmitSignIn = () => {
-    fetch('http://localhost:3000/register', {
+    fetch('http://localhost:3001/register', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -37,7 +37,9 @@ class Register extends React.Component {
         if (user.id) {
           this.props.loadUser(user)
           this.props.onRouteChange('home');
-        }
+        } else {
+      document.getElementById("errr").innerHTML = "Try Again!!"
+    }
       })
   }
 
@@ -87,6 +89,8 @@ class Register extends React.Component {
                 value="Register"
               />
             </div>
+              <div id='errr' className="lh-copy mt3">
+               </div>
           </div>
         </main>
       </article>

@@ -18,7 +18,7 @@ class Signin extends React.Component {
   }
 
   onSubmitSignIn = () => {
-    fetch('http://localhost:3000/signin', {
+    fetch('http://localhost:3001/signin', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -31,13 +31,16 @@ class Signin extends React.Component {
         if (user.id) {
           this.props.loadUser(user)
           this.props.onRouteChange('home');
-        }
+        }  else {
+      document.getElementById("err").innerHTML = "Error Logging In"
+    }
       })
   }
 
   render() {
     const { onRouteChange } = this.props;
     return (
+      <div>
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
         <main className="pa4 black-80">
           <div className="measure">
@@ -72,12 +75,18 @@ class Signin extends React.Component {
                 value="Sign in"
               />
             </div>
+            <div id='err' className="lh-copy mt3">
+          </div>
             <div className="lh-copy mt3">
               <p  onClick={() => onRouteChange('register')} className="f6 link dim black db pointer">Register</p>
             </div>
           </div>
         </main>
       </article>
+         <div className='white f3'>
+            Use 'test' on both field for quick Signin
+            </div>
+      </div>
     );
   }
 }

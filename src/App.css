@@ -8,10 +8,8 @@
 }
 
 .particles {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+	position: absolute;
+ 	height: 99vh;
+ 	width: 99vw;
   z-index: -1;
 }
